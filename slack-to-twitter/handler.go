@@ -27,6 +27,32 @@ func Tweet(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	log.Println(erb)
+	/*
+		var mrb MinimumRequestBody
+		if err := body.Decode(&mrb); err != nil {
+			errorResponse(w, fmt.Sprintf("Fail to decode mrb: %s", err))
+			return
+		}
+		if mrb.Type == "url_verification" {
+			var vrb VerifyRequestBody
+			if err := body.Decode(&vrb); err != nil {
+				errorResponse(w, fmt.Sprintf("Fail to decode vrb: %s", err))
+				return
+			}
+			successResponse(w, vrb.Challenge)
+		} else if mrb.Type == "event_callback" {
+			var erb interface{}
+			if err := body.Decode(&erb); err != nil {
+				errorResponse(w, fmt.Sprintf("Fail to decode erb: %s", err))
+				return
+			}
+			log.Println("Request: ", erb)
+			successResponse(w, "")
+		} else {
+			errorResponse(w, "Invalid type")
+		}
+	*/
+	return
 }
 
 func successResponse(w http.ResponseWriter, mes string) {
